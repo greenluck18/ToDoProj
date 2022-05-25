@@ -10,7 +10,7 @@ ClearCache.addEventListener('click', clearCache)
 todoList.addEventListener('click', deleteCheck)
 filterOption.addEventListener('click', filterTodo)
 // Functions
-fetch('http://localhost:8081/toDo')  
+fetch('http://86.105.252.86:8081/toDo')  
   .then((response) => response.json())  
   .then((arr) => {
       console.log(arr);
@@ -23,10 +23,10 @@ function completeTodo(id) {
     id = JSON.parse(decodeURIComponent(id))
     id.done = "true"
     console.log(id)
-    postData('http://localhost:8081/toDotest', id)
+    postData('http://86.105.252.86:8081/toDotest', id)
   .then(data => {
       console.log(data)
-    fetch('http://localhost:8081/toDo')  
+    fetch('http://86.105.252.86:8081/toDo')  
     .then((response) => response.json())  
     .then((arr) => {console.log(arr); drawList(arr)});  
   });
@@ -36,10 +36,10 @@ function deleteTodo(id){
     id = JSON.parse(decodeURIComponent(id))
     id.done = "true"
     console.log(id)
-    postData('http://localhost:8081/toDoDel', id)
+    postData('http://86.105.252.86:8081/toDoDel', id)
   .then(data => {
       console.log(data)
-    fetch('http://localhost:8081/toDoDel')  
+    fetch('http://86.105.252.86:8081/toDoDel')  
     .then((response) => response.json())  
     .then((arr) => {console.log(arr); drawList(arr)});  
   });
@@ -74,10 +74,10 @@ function drawList(data) {
 }
 function clearCache(event){
     console.log(event)
-    postData('http://localhost:8081/toDoClearAll', {})
+    postData('http://86.105.252.86:8081/toDoClearAll', {})
     .then(data => {
         console.log(data)
-      fetch('http://localhost:8081/toDoClearAll')  
+      fetch('http://86.105.252.86:8081/toDoClearAll')  
       .then((response) => response.json())  
       .then((arr) => {console.log(arr);drawList(arr)});  
     });
@@ -88,10 +88,10 @@ function addTodo(event) {
     event.preventDefault();
 console.log(todoInput.value)
 
-    postData('http://localhost:8081/toDo', { name : todoInput.value, done: "false", delete:"false"})
+    postData('http://86.105.252.86:8081/toDo', { name : todoInput.value, done: "false", delete:"false"})
   .then(data => {
       console.log(data)
-    fetch('http://localhost:8081/toDo')  
+    fetch('http://86.105.252.86:8081/toDo')  
     .then((response) => response.json())  
     .then((arr) => {console.log(arr);drawList(arr)});  
   });
